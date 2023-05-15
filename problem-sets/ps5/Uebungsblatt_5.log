@@ -1,0 +1,144 @@
+{"type":["init_ps"],"time":["2023-05-08 21:42:12"],"user":["Kai Minkus"],"umph":[1683574932.6234],"ok":[true]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:13"],"user":["Kai Minkus"],"umph":[1683574933.661],"ok":[true],"chunk":[1],"ex":[1],"e.ind":[0],"code":["library(wooldridge)\ndata(wage1)\nhead(wage1)\nskim(wage1)"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:13"],"user":["Kai Minkus"],"umph":[1683574933.7167],"ok":[true],"chunk":[2],"ex":[1],"e.ind":[0],"code":["\n# enter your code here ...\nreg1 <- lm(formula = wage ~ educ, data = wage1)\n\n# enter your code here ...\nsummary(reg1)"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:13"],"user":["Kai Minkus"],"umph":[1683574933.7457],"ok":[true],"chunk":[3],"ex":[1],"e.ind":[0],"code":["\n# enter your code here ...\n\"nein\""],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:13"],"user":["Kai Minkus"],"umph":[1683574933.833],"ok":[true],"chunk":[4],"ex":[1],"e.ind":[0],"code":["wage1 %>%\n mutate(gender = ifelse(female==1,\"female\",\"male\")) %>%\n group_by(gender) %>%\n summarize(mean(educ))\n\n# enter your code here ...\n"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:13"],"user":["Kai Minkus"],"umph":[1683574933.9931],"ok":[true],"chunk":[5],"ex":[1],"e.ind":[0],"code":["grViz('digraph G {\n\nx [label=\"Ausbildungsjahre x\"]\ny [label=\"Stundenlohn y\"]\nw [label=\"maennlich\"]\n\nx -> y [label=\"+\"];\nw -> x [label=\"+\"];\nw -> y [label=\"+\"];\n}')"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:14"],"user":["Kai Minkus"],"umph":[1683574934.0355],"ok":[true],"chunk":[6],"ex":[1],"e.ind":[0],"code":["\n# enter your code here ...\n1"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:14"],"user":["Kai Minkus"],"umph":[1683574934.1154],"ok":[true],"chunk":[7],"ex":[1],"e.ind":[0],"code":["reg2 <- lm(wage ~ educ + female, data=wage1)\nsummary(reg2)"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:14"],"user":["Kai Minkus"],"umph":[1683574934.2057],"ok":[true],"chunk":[8],"ex":[1],"e.ind":[0],"code":["grViz('digraph G {\nx -> y [label=\"+\"];\nw -> y [label=\"+\"];\n}')"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:14"],"user":["Kai Minkus"],"umph":[1683574934.305],"ok":[true],"chunk":[9],"ex":[1],"e.ind":[0],"code":["\n# enter your code here ...\n\"unverzerrt\""],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:15"],"user":["Kai Minkus"],"umph":[1683574935.7426],"ok":[true],"chunk":[10],"ex":[1],"e.ind":[0],"code":["########################################\n# Beispiel 1: w hat nur Einfluss auf y\n########################################\nset.seed(123)\nn <- 10000\nbeta1 <- 2 # wahrer kausaler effekt\nw <- rnorm(n,0,1)\nx <- rnorm(n,0,1)\ny <- beta1*x + w + rnorm(n,0,1)\n\n# Regression mit w als Kontrollvariable\nreg1 <- lm(y~x+w)\n# Regression ohne w als Kontrollvariable\nreg2 <- lm(y~x)\n# Zeige Ergbenisse nebeneinander\nlibrary(stargazer)\nstargazer(reg1, reg2, type=\"text\", digits=3, keep.stat=c(\"n\"))"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:16"],"user":["Kai Minkus"],"umph":[1683574936.2032],"ok":[true],"chunk":[11],"ex":[1],"e.ind":[0],"code":["########################################\n# Beispiel 2: w hat Einfluss auf y und x\n########################################\nset.seed(123)\nn <- 10000\nbeta1 <- 2 # wahrer kausaler effekt\nw <- rnorm(n,0,1)\nx <- rnorm(n,0,1) + w\ny <- beta1*x + w + rnorm(n,0,1)\n\n# Regression mit w als Kontrollvariable\nreg1 <- lm(y~x+w)\n# Regression ohne w als Kontrollvariable\nreg2 <- lm(y~x)\n# Zeige Ergbenisse nebeneinander\nstargazer(reg1, reg2, type=\"text\", digits=3, keep.stat=c(\"n\"))"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:16"],"user":["Kai Minkus"],"umph":[1683574936.2238],"ok":[true],"chunk":[12],"ex":[1],"e.ind":[0],"code":["\n# enter your code here ...\n\"nein\""],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:16"],"user":["Kai Minkus"],"umph":[1683574936.2613],"ok":[true],"chunk":[13],"ex":[1],"e.ind":[0],"code":["confint(lm(y~x))"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:16"],"user":["Kai Minkus"],"umph":[1683574936.3201],"ok":[true],"chunk":[14],"ex":[1],"e.ind":[0],"code":["\n# enter your code here ...\nconfint(lm(y~x), level = 0.99)"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:16"],"user":["Kai Minkus"],"umph":[1683574936.3429],"ok":[true],"chunk":[15],"ex":[1],"e.ind":[0],"code":["cor(wage1$exper,wage1$wage)"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:16"],"user":["Kai Minkus"],"umph":[1683574936.3711],"ok":[true],"chunk":[16],"ex":[1],"e.ind":[0],"code":["cor(wage1$exper,wage1$educ)"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:16"],"user":["Kai Minkus"],"umph":[1683574936.4472],"ok":[true],"chunk":[17],"ex":[1],"e.ind":[0],"code":["grViz('digraph G {\n\nx [label=\"Ausbildungsjahre x\"]\ny [label=\"Stundenlohn y\"]\nw [label=\"Arbeitserfahrung\"]\n\nx -> y [label=\"+\"];\nx -> w [label=\"-\"];\nw -> y [label=\"+\"];\n}')\n"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:16"],"user":["Kai Minkus"],"umph":[1683574936.493],"ok":[true],"chunk":[18],"ex":[1],"e.ind":[0],"code":["coef(lm(wage~educ, data=wage1))"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:16"],"user":["Kai Minkus"],"umph":[1683574936.5475],"ok":[true],"chunk":[19],"ex":[1],"e.ind":[0],"code":["\n# enter your code here ...\n\"groesser\""],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:17"],"user":["Kai Minkus"],"umph":[1683574937.4324],"ok":[true],"chunk":[20],"ex":[1],"e.ind":[0],"code":["coef(lm(wage~educ+exper, data=wage1))"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:17"],"user":["Kai Minkus"],"umph":[1683574937.4602],"ok":[true],"chunk":[21],"ex":[1],"e.ind":[0],"code":["\n# enter your code here ...\n0.54"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:17"],"user":["Kai Minkus"],"umph":[1683574937.5563],"ok":[true],"chunk":[22],"ex":[1],"e.ind":[0],"code":["reg1 <- lm(wage ~ educ, data = wage1)\nreg2 <- lm(wage ~ educ + female + nonwhite, data=wage1)\n\n# enter your code here ...\nreg3<- lm(wage ~ educ + female + nonwhite + exper, data = wage1)"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:18"],"user":["Kai Minkus"],"umph":[1683574938.3233],"ok":[true],"chunk":[23],"ex":[1],"e.ind":[0],"code":["stargazer( reg1, reg2, reg3 ,type = \"text\",  digits=2, omit.stat = c(\"f\",\"ser\"))"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:18"],"user":["Kai Minkus"],"umph":[1683574938.4026],"ok":[true],"chunk":[25],"ex":[2],"e.ind":[0],"code":["\n# enter your code here ...\nn_train <- sum(jtrain3$train)\nn_train"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:18"],"user":["Kai Minkus"],"umph":[1683574938.4555],"ok":[true],"chunk":[26],"ex":[2],"e.ind":[0],"code":["\n# enter your code here ...\n2"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:18"],"user":["Kai Minkus"],"umph":[1683574938.553],"ok":[true],"chunk":[27],"ex":[2],"e.ind":[0],"code":["\n# enter your code here ...\n#x = jtrain3$train\n#y = jtrain3$unem78\nreg1 <- lm(formula = unem78 ~train , data= jtrain3)\nsummary(reg1)\n\n# enter your code here ...\n"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:18"],"user":["Kai Minkus"],"umph":[1683574938.6545],"ok":[true],"chunk":[28],"ex":[2],"e.ind":[0],"code":["jtrain3 %>% \n group_by(unem75) %>%\n summarize(mean(train), mean(unem78))\n\n# enter your code here ...\n"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:18"],"user":["Kai Minkus"],"umph":[1683574938.7328],"ok":[true],"chunk":[29],"ex":[2],"e.ind":[0],"code":["library(DiagrammeR)\ngrViz('digraph G {\n\nx [label=\"Weiterbildung in 1977\"]\ny [label=\"Arbeitslos in 1978\"]\nw [label=\"Arbeitslos in 1975\"]\n\nx -> y [label=\"?\"]\nw -> x [label=\"+\"]\nw -> y [label=\"+\"]\n}')"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:18"],"user":["Kai Minkus"],"umph":[1683574938.8207],"ok":[true],"chunk":[30],"ex":[2],"e.ind":[0],"code":["\n# enter your code here ...\n\"kleiner\""],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:19"],"user":["Kai Minkus"],"umph":[1683574939.7498],"ok":[true],"chunk":[31],"ex":[2],"e.ind":[0],"code":["\n# enter your code here ...\nreg2 <- lm(unem78 ~train + unem75, data= jtrain3)\nstargazer(reg1,reg2)"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:19"],"user":["Kai Minkus"],"umph":[1683574939.81],"ok":[true],"chunk":[32],"ex":[2],"e.ind":[0],"code":["\n# enter your code here ...\njtrain3_la <- filter(jtrain3, unem75 ==1)\njtrain3_ka<- filter(jtrain3, unem75 == 0)"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:20"],"user":["Kai Minkus"],"umph":[1683574940.452],"ok":[true],"chunk":[33],"ex":[2],"e.ind":[0],"code":["\n# enter your code here ...\n\nreg_la <- lm(unem78 ~ train, data = jtrain3_la)\nreg_ka <- lm(unem78 ~train , data = jtrain3_ka)\n\n\nstargazer(reg1, reg2, reg_la, reg_ka,type=\"text\",keep.stat=c(\"n\"), column.labels = c(\"alle\",\"alle\", \"Lang Alo\",\"Kurz Alo\") )"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:20"],"user":["Kai Minkus"],"umph":[1683574940.9707],"ok":[true],"chunk":[34],"ex":[2],"e.ind":[0],"code":["reg3 <- lm(unem78 ~ train + unem75 + train:unem75 , data=jtrain3)\nstargazer(reg_la, reg_ka, reg3, type=\"text\",keep.stat=c(\"n\"), column.labels = c(\"Lang Alo\",\"Kurz Alo\", \"alle\") )"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:42:21"],"user":["Kai Minkus"],"umph":[1683574941.0258],"ok":[true],"chunk":[35],"ex":[2],"e.ind":[0],"code":["\n# enter your code here ...\n\"nein\""],"message":[""]}
+,
+{"type":["grade_ps"],"time":["2023-05-08 21:42:59"],"user":["Kai Minkus"],"umph":[1683574979.3548],"ok":[true]}
+,
+{"type":["init_ps"],"time":["2023-05-08 21:42:59"],"user":["Kai Minkus"],"umph":[1683574979.3968],"ok":[true]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:00"],"user":["Kai Minkus"],"umph":[1683574980.3156],"ok":[true],"chunk":[1],"ex":[1],"e.ind":[0],"code":["library(wooldridge)\ndata(wage1)\nhead(wage1)\nskim(wage1)"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:00"],"user":["Kai Minkus"],"umph":[1683574980.3516],"ok":[true],"chunk":[2],"ex":[1],"e.ind":[0],"code":["\n# enter your code here ...\nreg1 <- lm(formula = wage ~ educ, data = wage1)\n\n# enter your code here ...\nsummary(reg1)"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:00"],"user":["Kai Minkus"],"umph":[1683574980.3774],"ok":[true],"chunk":[3],"ex":[1],"e.ind":[0],"code":["\n# enter your code here ...\n\"nein\""],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:00"],"user":["Kai Minkus"],"umph":[1683574980.4705],"ok":[true],"chunk":[4],"ex":[1],"e.ind":[0],"code":["wage1 %>%\n mutate(gender = ifelse(female==1,\"female\",\"male\")) %>%\n group_by(gender) %>%\n summarize(mean(educ))\n\n# enter your code here ...\n"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:00"],"user":["Kai Minkus"],"umph":[1683574980.5398],"ok":[true],"chunk":[5],"ex":[1],"e.ind":[0],"code":["grViz('digraph G {\n\nx [label=\"Ausbildungsjahre x\"]\ny [label=\"Stundenlohn y\"]\nw [label=\"maennlich\"]\n\nx -> y [label=\"+\"];\nw -> x [label=\"+\"];\nw -> y [label=\"+\"];\n}')"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:01"],"user":["Kai Minkus"],"umph":[1683574981.4681],"ok":[true],"chunk":[6],"ex":[1],"e.ind":[0],"code":["\n# enter your code here ...\n1"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:01"],"user":["Kai Minkus"],"umph":[1683574981.5323],"ok":[true],"chunk":[7],"ex":[1],"e.ind":[0],"code":["reg2 <- lm(wage ~ educ + female, data=wage1)\nsummary(reg2)"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:01"],"user":["Kai Minkus"],"umph":[1683574981.6216],"ok":[true],"chunk":[8],"ex":[1],"e.ind":[0],"code":["grViz('digraph G {\nx -> y [label=\"+\"];\nw -> y [label=\"+\"];\n}')"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:01"],"user":["Kai Minkus"],"umph":[1683574981.7501],"ok":[true],"chunk":[9],"ex":[1],"e.ind":[0],"code":["\n# enter your code here ...\n\"unverzerrt\""],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:03"],"user":["Kai Minkus"],"umph":[1683574983.1027],"ok":[true],"chunk":[10],"ex":[1],"e.ind":[0],"code":["########################################\n# Beispiel 1: w hat nur Einfluss auf y\n########################################\nset.seed(123)\nn <- 10000\nbeta1 <- 2 # wahrer kausaler effekt\nw <- rnorm(n,0,1)\nx <- rnorm(n,0,1)\ny <- beta1*x + w + rnorm(n,0,1)\n\n# Regression mit w als Kontrollvariable\nreg1 <- lm(y~x+w)\n# Regression ohne w als Kontrollvariable\nreg2 <- lm(y~x)\n# Zeige Ergbenisse nebeneinander\nlibrary(stargazer)\nstargazer(reg1, reg2, type=\"text\", digits=3, keep.stat=c(\"n\"))"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:03"],"user":["Kai Minkus"],"umph":[1683574983.6717],"ok":[true],"chunk":[11],"ex":[1],"e.ind":[0],"code":["########################################\n# Beispiel 2: w hat Einfluss auf y und x\n########################################\nset.seed(123)\nn <- 10000\nbeta1 <- 2 # wahrer kausaler effekt\nw <- rnorm(n,0,1)\nx <- rnorm(n,0,1) + w\ny <- beta1*x + w + rnorm(n,0,1)\n\n# Regression mit w als Kontrollvariable\nreg1 <- lm(y~x+w)\n# Regression ohne w als Kontrollvariable\nreg2 <- lm(y~x)\n# Zeige Ergbenisse nebeneinander\nstargazer(reg1, reg2, type=\"text\", digits=3, keep.stat=c(\"n\"))"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:03"],"user":["Kai Minkus"],"umph":[1683574983.6948],"ok":[true],"chunk":[12],"ex":[1],"e.ind":[0],"code":["\n# enter your code here ...\n\"nein\""],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:03"],"user":["Kai Minkus"],"umph":[1683574983.728],"ok":[true],"chunk":[13],"ex":[1],"e.ind":[0],"code":["confint(lm(y~x))"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:03"],"user":["Kai Minkus"],"umph":[1683574983.7928],"ok":[true],"chunk":[14],"ex":[1],"e.ind":[0],"code":["\n# enter your code here ...\nconfint(lm(y~x), level = 0.99)"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:03"],"user":["Kai Minkus"],"umph":[1683574983.8101],"ok":[true],"chunk":[15],"ex":[1],"e.ind":[0],"code":["cor(wage1$exper,wage1$wage)"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:03"],"user":["Kai Minkus"],"umph":[1683574983.8346],"ok":[true],"chunk":[16],"ex":[1],"e.ind":[0],"code":["cor(wage1$exper,wage1$educ)"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:03"],"user":["Kai Minkus"],"umph":[1683574983.9222],"ok":[true],"chunk":[17],"ex":[1],"e.ind":[0],"code":["grViz('digraph G {\n\nx [label=\"Ausbildungsjahre x\"]\ny [label=\"Stundenlohn y\"]\nw [label=\"Arbeitserfahrung\"]\n\nx -> y [label=\"+\"];\nx -> w [label=\"-\"];\nw -> y [label=\"+\"];\n}')\n"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:04"],"user":["Kai Minkus"],"umph":[1683574984.0022],"ok":[true],"chunk":[18],"ex":[1],"e.ind":[0],"code":["coef(lm(wage~educ, data=wage1))"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:04"],"user":["Kai Minkus"],"umph":[1683574984.9403],"ok":[true],"chunk":[19],"ex":[1],"e.ind":[0],"code":["\n# enter your code here ...\n\"groesser\""],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:04"],"user":["Kai Minkus"],"umph":[1683574984.9731],"ok":[true],"chunk":[20],"ex":[1],"e.ind":[0],"code":["coef(lm(wage~educ+exper, data=wage1))"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:05"],"user":["Kai Minkus"],"umph":[1683574985.0172],"ok":[true],"chunk":[21],"ex":[1],"e.ind":[0],"code":["\n# enter your code here ...\n0.54"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:05"],"user":["Kai Minkus"],"umph":[1683574985.1101],"ok":[true],"chunk":[22],"ex":[1],"e.ind":[0],"code":["reg1 <- lm(wage ~ educ, data = wage1)\nreg2 <- lm(wage ~ educ + female + nonwhite, data=wage1)\n\n# enter your code here ...\nreg3<- lm(wage ~ educ + female + nonwhite + exper, data = wage1)"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:05"],"user":["Kai Minkus"],"umph":[1683574985.8361],"ok":[true],"chunk":[23],"ex":[1],"e.ind":[0],"code":["stargazer( reg1, reg2, reg3 ,type = \"text\",  digits=2, omit.stat = c(\"f\",\"ser\"))"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:09"],"user":["Kai Minkus"],"umph":[1683574989.1555],"ok":[true],"chunk":[24],"ex":[2],"e.ind":[0],"code":["help(jtrain3)\ndata(jtrain3)\nhead(jtrain3)\nskim(jtrain3)"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:09"],"user":["Kai Minkus"],"umph":[1683574989.1947],"ok":[true],"chunk":[25],"ex":[2],"e.ind":[0],"code":["\n# enter your code here ...\nn_train <- sum(jtrain3$train)\nn_train"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:09"],"user":["Kai Minkus"],"umph":[1683574989.2181],"ok":[true],"chunk":[26],"ex":[2],"e.ind":[0],"code":["\n# enter your code here ...\n2"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:09"],"user":["Kai Minkus"],"umph":[1683574989.2606],"ok":[true],"chunk":[27],"ex":[2],"e.ind":[0],"code":["\n# enter your code here ...\n#x = jtrain3$train\n#y = jtrain3$unem78\nreg1 <- lm(formula = unem78 ~train , data= jtrain3)\nsummary(reg1)\n\n# enter your code here ...\n"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:09"],"user":["Kai Minkus"],"umph":[1683574989.3296],"ok":[true],"chunk":[28],"ex":[2],"e.ind":[0],"code":["jtrain3 %>% \n group_by(unem75) %>%\n summarize(mean(train), mean(unem78))\n\n# enter your code here ...\n"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:09"],"user":["Kai Minkus"],"umph":[1683574989.4063],"ok":[true],"chunk":[29],"ex":[2],"e.ind":[0],"code":["library(DiagrammeR)\ngrViz('digraph G {\n\nx [label=\"Weiterbildung in 1977\"]\ny [label=\"Arbeitslos in 1978\"]\nw [label=\"Arbeitslos in 1975\"]\n\nx -> y [label=\"?\"]\nw -> x [label=\"+\"]\nw -> y [label=\"+\"]\n}')"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:09"],"user":["Kai Minkus"],"umph":[1683574989.4735],"ok":[true],"chunk":[30],"ex":[2],"e.ind":[0],"code":["\n# enter your code here ...\n\"kleiner\""],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:10"],"user":["Kai Minkus"],"umph":[1683574990.4368],"ok":[true],"chunk":[31],"ex":[2],"e.ind":[0],"code":["\n# enter your code here ...\nreg2 <- lm(unem78 ~train + unem75, data= jtrain3)\nstargazer(reg1,reg2)"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:10"],"user":["Kai Minkus"],"umph":[1683574990.496],"ok":[true],"chunk":[32],"ex":[2],"e.ind":[0],"code":["\n# enter your code here ...\njtrain3_la <- filter(jtrain3, unem75 ==1)\njtrain3_ka<- filter(jtrain3, unem75 == 0)"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:11"],"user":["Kai Minkus"],"umph":[1683574991.1425],"ok":[true],"chunk":[33],"ex":[2],"e.ind":[0],"code":["\n# enter your code here ...\n\nreg_la <- lm(unem78 ~ train, data = jtrain3_la)\nreg_ka <- lm(unem78 ~train , data = jtrain3_ka)\n\n\nstargazer(reg1, reg2, reg_la, reg_ka,type=\"text\",keep.stat=c(\"n\"), column.labels = c(\"alle\",\"alle\", \"Lang Alo\",\"Kurz Alo\") )"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:11"],"user":["Kai Minkus"],"umph":[1683574991.6756],"ok":[true],"chunk":[34],"ex":[2],"e.ind":[0],"code":["reg3 <- lm(unem78 ~ train + unem75 + train:unem75 , data=jtrain3)\nstargazer(reg_la, reg_ka, reg3, type=\"text\",keep.stat=c(\"n\"), column.labels = c(\"Lang Alo\",\"Kurz Alo\", \"alle\") )"],"message":[""]}
+,
+{"type":["check_chunk"],"time":["2023-05-08 21:43:11"],"user":["Kai Minkus"],"umph":[1683574991.6928],"ok":[true],"chunk":[35],"ex":[2],"e.ind":[0],"code":["\n# enter your code here ...\n\"nein\""],"message":[""]}
+,
